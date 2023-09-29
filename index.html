@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <!-- Row 1 -->
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <!-- Row 2 -->
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <!-- Row 3 -->
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <!-- Row 4 -->
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button id="equals" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <!-- Clear -->
+            <button id="clear" onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ede2ec;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.calculator {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    border: none;
+    text-align: right;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.operator {
+    background-color: rgb(235, 112, 12);
+    color: #fff;
+}
+
+#equals {
+    background-color: rgb(12, 214, 66);
+    color: #fff;
+}
+</style>
+
+<script>
+
+let display = document.getElementById("display");
+
+function appendToDisplay(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function calculate() {
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = "Error";
+    }
+}
+</script>
